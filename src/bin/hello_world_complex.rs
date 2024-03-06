@@ -26,19 +26,12 @@ fn main() {
     // Declare a mutable buffer typed as String.
     let mut buffer = String::new();
 
-    let stdin = io::stdin();
-    // TODO: acquire stdin lock.
-    // FILL HERE!
+    let mut inhandler = io::stdin().lock();
 
-    // TODO: call `read_line` and read to the buffer.
-    // FILL HERE!
-
+    inhandler.read_line(&mut buffer).expect("Unable to read line");
+    buffer = buffer.trim().to_string();
     let s = format!("Hello, world! Welcome to LCPU RLG, {}!", buffer);
 
-    let stdout = io::stdout();
-    // TODO: acquire stdout lock.
-    // FILL HERE!
-
-    // TODO: call `write_all` and write to the console.
-    // FILL HERE!
+    let mut outhandler = io::stdout().lock();
+    outhandler.write_all(s.as_bytes()).unwrap()
 }

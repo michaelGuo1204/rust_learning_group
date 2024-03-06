@@ -15,5 +15,6 @@
 /// 6. Run command `cargo run` to actually run your program.
 /// 7. Expect "Hello, world!" to be shown.
 fn main() {
-    todo!() // Paste code and complete it!
+
+    println!("Hello, world"); // Paste code and complete it!
 }

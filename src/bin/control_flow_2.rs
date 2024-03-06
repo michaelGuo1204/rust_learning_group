@@ -1,6 +1,7 @@
 //! Learning basic control flow: match
 
 use std::io;
+use std::io::BufRead;
 
 /// ### match is so powerful but we'll just introduce a bit here.
 ///
@@ -17,8 +18,24 @@ use std::io;
 ///      tailing white characters.
 ///
 /// Tips: you might want to use `trim()`, search for it yourself!
+///
+
+
 fn cf_match() {
-    todo!() // implement here!
+    let mut buffer = String::new();
+    //let stdin = io::stdin();
+    let mut handler = io::stdin().lock();
+    handler.read_line(&mut buffer).expect("Cannot read lines");
+    match buffer.as_str() {
+        "whoami" => {
+            println!("LCPU-RLG");
+        }, "exit" => {
+            println!("EXIT")
+        },
+        _ => {
+            println!("{}",buffer.trim())
+        }
+    }
 }
 
 fn main() {

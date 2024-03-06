@@ -31,7 +31,10 @@ use std::io::{self, Write};
 /// println!("hey, stdout!");
 /// ```
 fn stdout_lock() -> io::Result<()> {
-    todo!() // Paste code and complete it!
+    let stdout = io::stdout();
+    let mut handle = stdout.lock();
+    handle.write_all(b"Hey, stdout!").unwrap();
+    Ok(())
 }
 
 fn main() {

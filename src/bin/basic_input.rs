@@ -75,7 +75,13 @@ use std::io::{self, BufRead};
 /// }
 /// ```
 fn stdin_lock() -> io::Result<()> {
-    todo!() // Paste code and complete it!
+    println!("Reading data from std");
+    let mut buffer = String::new();
+    let stdin = io::stdin();
+    let mut handle = stdin.lock();
+    let _ = handle.read_line(&mut buffer);
+    println!("{}",buffer);
+    Ok(())
 }
 
 fn main() {
