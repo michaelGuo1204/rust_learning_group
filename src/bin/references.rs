@@ -113,19 +113,19 @@ fn main() {
         3. Solve compiler error E0502 by commenting out one line of the `assert_eq!`. Consider borrowing rules and reason why commenting out that line works.
      */
 
-    for word // FIX ME           
+    for mut word // FIX ME
     in vec {
         let t = {
-            this_is_t(word) // FIX ME
+            this_is_t(word.clone()) // FIX ME
         };
         let r = {
-            this_is_ref(word) // FIX ME
+            this_is_ref(&word) // FIX ME
         };
         let r_mut = {
-            this_is_mut_ref(word) // FIX ME
+            this_is_mut_ref(&mut word) // FIX ME
         };
 
-        assert_eq!(t, r); // FIX ME
-        assert_eq!(t, r_mut); // FIX ME
+        //assert_eq!(t, r); // FIX ME
+        assert_eq!(t, *r_mut); // FIX ME
     }
 }

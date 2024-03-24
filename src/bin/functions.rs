@@ -51,11 +51,16 @@
 /// }
 /// ```
 fn quiz() {
-    fn foo(x, y: i32) { // FIX ME
+    fn foo(x:i32, y: i32)->&'static str { // FIX ME
         println!("x: {}, y: {}", x, y);
         "hello"
     }
     assert_eq!(foo(1, 2), "hello");
+    fn foo_own(x:i32, y: i32) -> String { // FIX ME
+        println!("x: {}, y: {}", x, y);
+        "hello".to_owned()
+    }
+    assert_eq!(foo_own(1, 2), "hello");
 }
 
 fn main() {

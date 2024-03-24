@@ -1,5 +1,7 @@
 //! Learning basic control flow: loops
 
+// use std::ops::Index;
+
 /// ### Loops
 ///
 /// In Rust, there are three primary loop types: `while`, `for`, and `loop`.
@@ -154,12 +156,53 @@
 /// UNO!
 /// 4
 /// ```
+///
+
+
+
 fn quiz() {
     let mut total = 0;
     let mut cards = [0; 13];
-    
-    // Your code here
+    let draw =|i:i32, cards: &mut[i32]| {
+        for _i in 0..i{cards[draw_card()]+=1;}
+    };
+    let check_finish = |all_cards:&[i32]|{
+        if all_cards.iter().sum::<i32>() == 1{
+            println!("UNO!");
+            1}else{0}
+    };
+    loop{
+        let opponent = read_line();
+        match opponent.as_str() {
+            "+2"=> {draw(2,&mut cards);total+=2},
+            "+4"=> {draw(4,&mut cards);total+=4},
+            other => {
+                let opponent_result = other.trim().parse::<usize>();
+                let opponent_card:usize = match opponent_result {
+                    Ok(num)=>num,
+                    Err(_)=>{println!("Invalid response");break}
+                };
+                if cards[opponent_card]>0{
+                   cards[opponent_card]-=1;
+                }else{
+                    loop{
+                        let new_card =draw_card();
+                        total +=1;
+                        if new_card == opponent_card{
+                            break
+                        }else{
+                            cards[new_card]+=1;
+                        }
+                    }
+                }
 
+                match check_finish(&cards){
+                    1=>break,
+                    _=>continue
+                };
+            }
+        };
+    }
     println!("{}", total);
 }
 

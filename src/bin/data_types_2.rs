@@ -162,6 +162,14 @@
 ///
 fn quiz() {
     let mut result = String::new();
+    let  inst_buffer = read_line();
+    let times_buffer = read_line();
+    let mut inst_string = inst_buffer.trim().to_string();
+    inst_string.retain(|c| c != 'y');
+    let times:i32 = parse_i32(&times_buffer);
+    for _i in 0..times{
+        result.push_str(&inst_string);
+    }
 
     // Your code here
     

@@ -140,6 +140,11 @@
 fn quiz() {
     let x = read_i32();
     let y = read_f64();
+    let x_mask = 0xFF;
+    let tructed_x = (x & x_mask) as u32;
+    let inte_y = y as i64;
+    let sum = (tructed_x as i64)+inte_y;
+    println!("{}\n{}\n{}\n",tructed_x,inte_y,sum)
 
     // Your code here
 }
